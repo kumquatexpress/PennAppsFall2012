@@ -94,3 +94,30 @@ img.loading {
     width: 50%;
     margin: 40% 25%;
 }
+.sublet-detail {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    padding: 20px;
+    color: white;
+}
+.sublet-detail .title {
+    font-weight: bold;
+}
+.crime-box {
+    width: 94%;
+    height: 200px;
+    overflow: auto;
+    font-size: 75%;
+    padding: 3%;
+    background: white;
+    color: #666;
+}
+.crime img {
+    height: 16px;
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+}
