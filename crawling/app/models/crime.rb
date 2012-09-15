@@ -1,6 +1,5 @@
 class Crime < ActiveRecord::Base
   attr_accessible :address, :date, :lat, :long, :crime_type, :spotcrime_id
-  establish_connection 'sqlite_' + Rails.env
   require 'open-uri'
   require 'json'
 
