@@ -24,6 +24,7 @@
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
     eventHandles();
+    
 
   }
 
@@ -190,7 +191,7 @@
   function search(address){
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
+        map.panTo(results[0].geometry.location);
         map.setZoom(15);
       } else {
         alert("We weren't able to find the location you specified! " + status);
