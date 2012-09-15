@@ -1,5 +1,6 @@
 
   var map;
+  var heatmap;
   var geocoder = new google.maps.Geocoder();
 (function(){
 
@@ -32,14 +33,16 @@
     //handle events
   function eventHandles(){
     //on zoom
+    var t;
     google.maps.event.addListener(map, 'zoom_changed', 
       function() {
-        //update viewport corners 
-        viewport_ne = map.getBounds().getNorthEast();
-        viewport_sw = map.getBounds().getSouthWest();
-        getCrimes();
+            clearTimeout(t);
+            t = setTimeout(function(){
+                getCrimes();
+            },500);
 
         var zoomLevel = map.getZoom();
+        console.log(zoomLevel);
         //infowindow.setContent('Zoom: ' + zoomLevel);
     });
 
@@ -86,7 +89,9 @@
 
   function getCrimes(){
 
-    
+                viewport_ne = map.getBounds().getNorthEast();
+                viewport_sw = map.getBounds().getSouthWest();
+                
     data = 
     {
       "max_lat": viewport_ne.lat(),
@@ -96,14 +101,29 @@
     }
     $.getJSON("http://maps.hulce.net/crime_points.php", data, function(data){
       console.log(data);
+      var heatmapData = [];
+      for(var i=0;i<data.points.length;i++) {
+          var the_point = data.points[i];
+          var elem = {
+              location: new google.maps.LatLng(the_point.lat,the_point.lon),
+              weight : the_point.level
+          };
+          heatmapData.push(elem);
+          console.log(elem);
+      }
+      
+        if(heatmap!=null) {
+            heatmap.setMap(null);
+        }
+      heatmap = new google.maps.visualization.HeatmapLayer({
+          data: heatmapData,
+          radius: 40,
+          opacity: 1,
+          gradient: ['#f00','#0f0']
+        });
+        console.log(heatmapData);
+        heatmap.setMap(map);
     
-    
-    clearMarkers();
-    //var data = temp_data;
-    console.log(data.length + 'wefwef');
-    for(i=0; i<data.length;i++) {
-      generateMarker(data[i].lat,data[i].lon,data[i].url);
-    }
 
     });
 
@@ -134,7 +154,7 @@
         google.maps.event.addListener(marker, 'mouseover', function() {
           if (!infoBubble.isOpen()) {
             infoBubble.open(map, marker);
-            updateStyles();
+            //updateStyles();
           }
         });
          google.maps.event.addListener(marker, 'mouseout', function() {
@@ -198,14 +218,18 @@
 
 
 function search(address){
+    var ret;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         map.panTo(results[0].geometry.location);
         map.setZoom(15);
+        ret = true;
       } else {
-        alert("We weren't able to find the location you specified! " + status);
+        console.log(status);
+        ret = false;
       }
     });
+    return ret;
   }
 
 
