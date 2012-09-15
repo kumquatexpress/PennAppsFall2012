@@ -33,17 +33,9 @@
         </div>
         <div style="clear:both"></div>
         <div class="results">
-            <div class="sublet">
-            	<div class="glance">
-                    <div class="rating"><img src="img/32/80.png" /></div>
-                    <div class="price">$900</div>
-                </div>
-                <div class='info'>
-                    <div class="title"><span class="type">2BR 3BATH</span></div>
-                    <div class="description">This is a fine apartment over lookin the river on a nice lake in front of a city dump. Call for details!</div>
-            </div>
+            
         </div>
-    </div>
+        <div class="storage"></div>
 </div>
   </body>
 </html>

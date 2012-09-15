@@ -43,7 +43,13 @@
 
         var zoomLevel = map.getZoom();
         console.log(zoomLevel);
-        //infowindow.setContent('Zoom: ' + zoomLevel);
+    });
+    google.maps.event.addListener(map, 'center_changed', 
+      function() {
+            clearTimeout(t);
+            t = setTimeout(function(){
+                getCrimes();
+            },500);
     });
 
 
@@ -109,22 +115,48 @@
               weight : the_point.level
           };
           heatmapData.push(elem);
-          console.log(elem);
       }
       
         if(heatmap!=null) {
             heatmap.setMap(null);
         }
+        var rad;
+        var z = map.getZoom();
+        if(z < 13) {
+            rad = 10;
+        }
+        if(z < 14) {
+            rad = 20;
+        }
+        else if(z < 15) {
+            rad = 40;
+        }
+        else {
+            rad = 70;
+        }
       heatmap = new google.maps.visualization.HeatmapLayer({
           data: heatmapData,
-          radius: 40,
-          opacity: .6,
-          gradient: ['#0f0','#ff0','#f00']
+          radius: rad
         });
-        console.log(heatmapData);
+        console.log(heatmapData.length);
         heatmap.setMap(map);
-    
-
+        for(var i=0;i<data.sublets.length;i++) {
+            var sub = data.sublets[i];
+            console.log(sub);
+            $('.results').append(
+                "<div class='sublet'><span class='identifier'>"+sub.id+"</span>"+
+            	"<div class='glance'>"+
+                    "<div class='rating'><img src='img/32/80.png' /></div>"+
+                    "<div class='price'>$"+sub.price+"</div>"+
+                "</div>"+
+                "<div class='info'>"+
+                    "<div class='title'><span class='type'>"+sub.size+"</span></div>"+
+                    "<div class='description'>"+sub.description+"</div>"+
+                "</div>\n\
+</div>"
+            );
+        }
+        sublet_details();
     });
 
   }
@@ -218,18 +250,16 @@
 
 
 function search(address){
-    var ret;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         map.panTo(results[0].geometry.location);
         map.setZoom(15);
-        ret = true;
+        search_true();
       } else {
         console.log(status);
-        ret = false;
+        search_false();
       }
     });
-    return ret;
   }
 
 

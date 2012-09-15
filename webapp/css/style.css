@@ -2,7 +2,7 @@ html, body, #map_canvas {
   margin: 0;
   padding: 0;
   height: 100%;
-  width: 100%; 
+  width: 100%;
   }
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -25,13 +25,14 @@ body {
 	margin: 45% 30% 0;
 }
 #sidebar {
+        display: none;
 	position: absolute;
 	top: 0px;
 	right: 0px;
 	width: 25%;
 	height: 100%;
-	z-index: -1;
-	background: #666666;
+	z-index: 2;
+	background: rgba(0,0,0,.6);
 }
 #sidebar .content {
 	padding: 5%;
@@ -52,8 +53,14 @@ body {
 .back {
 display: none;
 }
+.storage {
+	display: none;
+}
 .results {
-	margin-top: 20px;
+	top: 80px;
+        overflow: auto;
+        position: absolute;
+        bottom: 0px;
 }
 .results .sublet {
 	height: 60px;
@@ -62,7 +69,7 @@ display: none;
 	color: #fff;
 	padding: 10px;
 }
-.results .sublet.hovered {
+.results .sublet:hover {
     background: white;
     color: #555;
     cursor: pointer;
@@ -77,4 +84,7 @@ display: none;
 }
 .sublet .title {
     font-weight: bold;
+}
+.sublet .identifier {
+    display: none;
 }

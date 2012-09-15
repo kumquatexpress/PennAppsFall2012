@@ -8,20 +8,60 @@ $max_lon = $_GET['max_lon'];
 $min_lon = $_GET['min_lon'];
 $q_lat = "`lat` >= '$min_lat' AND `lat` <= '$max_lat'";
 $q_lon = "`long` >= '$min_lon' AND `long` <= '$max_lon'";
-$query = "SELECT * FROM points WHERE $q_lat AND $q_lon ORDER BY `lat` DESC, `long` DESC";
+//=================
+//CRIME INFORMATION
+//=================
+$query = "SELECT * FROM crimes WHERE $q_lat AND $q_lon AND `date` > '2012-05' ORDER BY `lat` DESC, `long` DESC";
 $q = mysql_query($query,$conn) or die(mysql_error());
 $points = array();
-$skip_val = (mysql_num_rows($q) > 30000) ? round(mysql_num_rows($q) / 30000) : 1;
-$i=0;
 while($point = mysql_fetch_assoc($q)) {
-    if($i % $skip_val == 0) {
+    switch($point['crime_type']) {
+        case "Shooting":
+            $weight = 500;
+            break;
+        case "Assault":
+            $weight = 100;
+            break;
+        case "Arrest":
+            $weight = 50;
+            break;
+        case "Burglary":
+            $weight = 30;
+            break;
+        case "Robbery":
+            $weight = 5;
+            break;
+        case "Theft":
+            $weight = 1;
+            break;
+        default:
+            $weight = 0.1;
+            break;
+    }
         $points[] = array(
             'lat'=>$point['lat'],
             'lon'=>$point['long'],
-            'level'=>1/max(1,round($point['level']))*100
+            'level'=>$weight
             );
-    }
-    $i += 1 + round(rand(0, .8));
 }
-echo json_encode(array('points'=>$points,'sublets'=>null));
+//==================
+//SUBLET INFORMATION
+//==================
+$query_sub = "SELECT * FROM houses WHERE $q_lat AND $q_lon ORDER BY `lat` DESC, `long` DESC";
+$q_sub = mysql_query($query_sub,$conn) or die(mysql_error());
+$sublets = array();
+while($sublet = mysql_fetch_assoc($q_sub)) {
+    $price_info = explode("/", $sublet['price']);
+    $price = $price_info[0];
+    $size = $price_info[1];
+    $sublets[] = array(
+        'id' => $sublet['id'],
+        'price' =>$price,
+        'size' => strtoupper($size),
+        'description' =>$sublet['listing_header'],
+        'location'=> $sublet['address'],
+        'url' => $sublet['listing_url']
+    );
+}
+echo json_encode(array('points'=>$points,'sublets'=>$sublets));
 ?>
