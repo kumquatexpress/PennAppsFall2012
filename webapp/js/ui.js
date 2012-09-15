@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('#search_form').submit(function() {
           event.preventDefault();
+          search($('#search_input').val());
           $('.overlay').each(function() {
                         $(this).fadeOut();
                 });
