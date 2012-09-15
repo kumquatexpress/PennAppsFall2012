@@ -8,21 +8,21 @@ class Point < ActiveRecord::Base
   	 	j = min_long
   		while j < max_long do
   			calculate_point(i, j)
-  			j += 0.00145
+  			j += 0.001
   		end
-  		i+=0.00145
+  		i+=0.001
   	end
   end
 
 
   def self.calculate_point(lat, long)
-  	radius = 0.007
+  	radius = 0.00145
 
   	crimes = Crime.where("lat < '"+(lat+radius).to_s+"' and
   		lat > '"+(lat-radius).to_s+"' and long < '"+(long+radius).to_s+"'
   		 and long > '"+(long-radius).to_s+"'")
 
-  	print crimes.count
+  	crimescount = crimes.count
 
   	rating = 100
 
@@ -38,30 +38,36 @@ class Point < ActiveRecord::Base
   		if(crime.crime_type == "Shooting")
   			value *= 10
   		elsif(crime.crime_type == "Assault")
-  			value *= 3
+  			value *= 5
   		elsif(crime.crime_type == "Robbery")
-  			value *= 1
+  			value *= 2.5
   		elsif(crime.crime_type == "Theft")
-  			value *= 0.4
-  		elsif(crime.crime_type == "Other")
   			value *= 1
+  		elsif(crime.crime_type == "Other")
+  			value *= 2.5
   		elsif(crime.crime_type == "Arrest")
-  			value *= 3
+  			value *= 5
   		else
   			value = 0
   		end
 
-  		value *= (0.007/distance)
-  		rating -= value
+  		value *= (0.00145/distance)
+  		rating += value
   	end
+
+  	realrating = self.normalize(rating)
 
 	newpoint = Point.new(
 		:lat => lat,
 		:long => long,
 		:level => rating,
-		:num_crimes => crimes.count)
+		:num_crimes => crimescount)
 	newpoint.save
 
+  end
+
+  def self.normalize(rating)
+  	return 1000/rating
   end
 
 end

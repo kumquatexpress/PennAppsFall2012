@@ -386,3 +386,436 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "houses" ADD "date" datetime
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915071825')[0m
+  [1m[35m (8.9ms)[0m  commit transaction
+  [1m[36m (0.8ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to AddDateToHouses (20120915071825)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "altered_houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "date" datetime) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "houses"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "houses"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("altered_houses")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_houses"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_houses"
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915071825'[0m
+  [1m[35m (8.7ms)[0m  commit transaction
+  [1m[36m (0.8ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreatePoints (20120915023640)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (2.1ms)[0m  [1mDROP TABLE "points"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915023640'
+  [1m[36m (10.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("businesses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("crimes")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(25,21), "long" decimal(25,21), "level" integer, "num_crimes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915023640')[0m
+  [1m[35m (7.3ms)[0m  commit transaction
+Migrating to AddDateToHouses (20120915071825)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  ALTER TABLE "houses" ADD "date" datetime
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915071825')[0m
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.8ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("businesses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("crimes")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("points")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("testthingies")
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to AddDateToHouses (20120915071825)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "altered_houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "date" datetime) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "houses"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "houses"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("altered_houses")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_houses"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_houses"
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915071825'[0m
+  [1m[35m (8.0ms)[0m  commit transaction
+  [1m[36m (0.8ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreatePoints (20120915023640)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "points"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915023640'
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.7ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("businesses")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("crimes")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(25,21), "long" decimal(25,21), "level" integer, "num_crimes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915023640')[0m
+  [1m[35m (6.5ms)[0m  commit transaction
+Migrating to AddDateToHouses (20120915071825)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "houses" ADD "date" datetime
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915071825')[0m
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.7ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to AddDateToHouses (20120915071825)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "altered_houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "date" datetime) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "houses"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "houses"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("altered_houses")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_houses"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_houses"
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915071825'[0m
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreatePoints (20120915023640)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "points"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915023640'
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.7ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("businesses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("crimes")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(25,21), "long" decimal(25,21), "level" decimal, "num_crimes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915023640')[0m
+  [1m[35m (7.7ms)[0m  commit transaction
+Migrating to AddDateToHouses (20120915071825)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "houses" ADD "date" datetime
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915071825')[0m
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.7ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to AddDateToHouses (20120915071825)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "altered_houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "date" datetime) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "houses"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "houses"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("altered_houses")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_houses"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_houses"
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915071825'[0m
+  [1m[35m (8.8ms)[0m  commit transaction
+  [1m[36m (0.8ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreatePoints (20120915023640)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "points"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915023640'
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("businesses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("crimes")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateHouses (20120915014046)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "houses"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120915014046'
+  [1m[36m (6.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.7ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("businesses")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("crimes")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("testthingies")
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateBusinesses (20120910214501)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "businesses"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120910214501'
+  [1m[36m (7.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateCrimes (20120909030504)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (8.2ms)[0m  [1mDROP TABLE "crimes"[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20120909030504'
+  [1m[36m (14.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("testthingies")
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "crimes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "crime_type" varchar(255), "address" varchar(255), "lat" decimal(25,21), "long" decimal(25,21), "date" datetime, "spotcrime_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120909030504')[0m
+  [1m[35m (6.8ms)[0m  commit transaction
+Migrating to CreateBusinesses (20120910214501)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "businesses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "address" varchar(255), "lat" decimal(25,21), "long" decimal(25,21), "image_url" varchar(255), "yelp_url" varchar(255), "yelp_id" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120910214501')[0m
+  [1m[35m (3.7ms)[0m  commit transaction
+Migrating to CreateHouses (20120915014046)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer, "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915014046')[0m
+  [1m[35m (4.4ms)[0m  commit transaction
+Migrating to CreatePoints (20120915023640)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(25,21), "long" decimal(25,21), "level" decimal, "num_crimes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915023640')[0m
+  [1m[35m (3.6ms)[0m  commit transaction
+Migrating to AddDateToHouses (20120915071825)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "houses" ADD "date" datetime
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120915071825')[0m
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.8ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("businesses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("crimes")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("houses")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("points")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("testthingies")[0m
+Connecting to database specified by database.yml
+  [1m[36m (13.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+  [1m[35m (168.5ms)[0m  ALTER TABLE `houses` ADD `date` datetime
+  [1m[36m (32.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120915071825')[0m
+  [1m[35m (125.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (58.8ms)[0m  [1mDROP TABLE `businesses`[0m
+  [1m[35m (169.6ms)[0m  CREATE TABLE `businesses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `address` varchar(255), `lat` decimal(25,21), `long` decimal(25,21), `image_url` varchar(255), `yelp_url` varchar(255), `yelp_id` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (88.3ms)[0m  [1mDROP TABLE `crimes`[0m
+  [1m[35m (48.1ms)[0m  CREATE TABLE `crimes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `type` varchar(255), `address` varchar(255), `lat` decimal(25,21), `long` decimal(25,21), `date` datetime, `spotcrime_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (49.5ms)[0m  [1mDROP TABLE `houses`[0m
+  [1m[35m (98.0ms)[0m  CREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `listing_id` int(11), `listing_url` varchar(255), `price` int(11), `listing_header` text, `address` varchar(255), `city` varchar(255), `zip` int(11), `images` text, `lat` decimal(25,21), `long` decimal(25,21), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `date` datetime) ENGINE=InnoDB
+  [1m[36m (35.0ms)[0m  [1mDROP TABLE `points`[0m
+  [1m[35m (159.2ms)[0m  CREATE TABLE `points` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `lat` decimal(25,21), `long` decimal(25,21), `level` decimal(5,3), `num_crimes` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.0ms)[0m  [1mDROP TABLE `testthingies`[0m
+  [1m[35m (56.3ms)[0m  CREATE TABLE `testthingies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (186.6ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (16.6ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to RenameTypeToCrimeType (20120915171413)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to RenameTypeToCrimeType (20120915171413)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to RenameTypeToCrimeType (20120915171413)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to AddCrimeCountAndDangerToHouses (20120915195150)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "houses" ADD "crime_count" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "houses" ADD "level" decimal[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120915195150')
+  [1m[36m (9.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("businesses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("crimes")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("points")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("testthingies")
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
