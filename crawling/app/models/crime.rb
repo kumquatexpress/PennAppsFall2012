@@ -1,5 +1,6 @@
 class Crime < ActiveRecord::Base
   attr_accessible :address, :date, :lat, :long, :crime_type, :spotcrime_id
+  establish_connection 'mysql_' + Rails.env
   require 'open-uri'
   require 'json'
 
@@ -16,9 +17,6 @@ class Crime < ActiveRecord::Base
   end
 
   def self.get_crimes(lat, long)
-  	print "getting crimes for"
-  	print lat
-  	print long
   	start_date = '2011-01-01'
   	radius = 0.002
   	http_uri = 'http://api.spotcrime.com'+
@@ -27,10 +25,8 @@ class Crime < ActiveRecord::Base
 
   	body = open(http_uri).read
   	parsed_json = JSON(body)
-  	print "got json"
 
   	parsed_json['crimes'].each do |crime|
-  		print "hello"
   		type = crime['type']
   		did = crime['cdid']
   		address = crime['address']
@@ -39,16 +35,15 @@ class Crime < ActiveRecord::Base
   		date = crime['date']
   		link = crime['link']
 
-  		if date
-  			print date
-  			newdate = date[0..5]+'20'+date[6..date.length-1]
-  			newdate.gsub!('/', '-')
-  			print newdate
-  			realdate= 
-  				DateTime.strptime(newdate, '%m-%d-%Y %H:%M').to_time
-  		end
-
   		unless Crime.where(:spotcrime_id => did).first
+
+	  		if date
+	  			newdate = date[0..5]+'20'+date[6..date.length-1]
+	  			newdate.gsub!('/', '-')
+	  			realdate= 
+	  				DateTime.strptime(newdate, '%m-%d-%Y %H:%M').to_time
+	  		end
+	  		
   			temp = Crime.new(
   				:crime_type => type,
   				:spotcrime_id => did,
