@@ -13,21 +13,21 @@
 # gem 'pg'
 #
 development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: pennappsfa2012
+  pool: 5
+  host: hulce.net
+  username: pennapps
+  password: pennapps
+  socket: /var/run/mysqld/mysqld.sock
+
+sqlite_development:
   adapter: sqlite3
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
-
-
-#  adapter: mysql2
-#  encoding: utf8
-#  reconnect: false
-#  database: pennappsfa2012
-#  pool: 5
-#  host: hulce.net
-#  username: pennapps
-#  password: pennapps
-#  socket: /var/run/mysqld/mysqld.sock
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have

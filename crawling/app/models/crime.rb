@@ -1,13 +1,13 @@
 class Crime < ActiveRecord::Base
   attr_accessible :address, :date, :lat, :long, :crime_type, :spotcrime_id
-
+  establish_connection 'sqlite_' + Rails.env
   require 'open-uri'
   require 'json'
 
   def self.get_all_crimes(min_lat, max_lat, min_long, max_long)
   	 i = min_lat
-  	 j = min_long
   	 while i < max_lat do
+  	 	j = min_long
   		while j < max_long do
   			get_crimes(i, j)
   			j += 0.001
