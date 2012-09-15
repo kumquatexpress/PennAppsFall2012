@@ -14,7 +14,38 @@ $info = array(
     'size' => strtoupper($_info['size']),
     'description' =>$_info['listing_header'],
     'location'=> $_info['address'],
-    'url' => $_info['listing_url']
+    'url' => $_info['listing_url'],
+    'lat' => $_info['lat'],
+    'lon' => $_info['long']
 );
-echo json_encode(array('info'=>$info,'crimes'=>$crimes));
+$min_lat = $_info['lat'] - .00175;
+$max_lat = $_info['lat'] + .00175;
+$min_lon = $_info['long'] - .00175;
+$max_lon = $_info['long'] + .00175;
+$q_lat = "`lat` >= '$min_lat' AND `lat` <= '$max_lat'";
+$q_lon = "`long` >= '$min_lon' AND `long` <= '$max_lon'";
+$query_crimes = "SELECT * FROM crimes WHERE $q_lat AND $q_lon";
+$q_crime = mysql_query($query_crimes,$conn) or die(mysql_error());
+$crimes = array();
+$times = array();
+$types = array();
+while($crime = mysql_fetch_assoc($q_crime)) {
+    $times[date('G',strtotime($crime['date']))]++;
+    $types[$crime['crime_type']]++;
+    $crimes[] = array(
+       'type' => $crime['crime_type'],
+       'lat' => $crime['lat'], 
+       'lon' => $crime['long'], 
+       'address' => $crime['address'],
+       'time' => date('g:ia',strtotime($crime['date']))
+    );
+}
+echo json_encode(array(
+    'info'=>$info,
+    'crime'=>array(
+        'crimes' => $crimes,
+        'types' => $types,
+        'times' => $times
+    )
+    ));
 ?>
