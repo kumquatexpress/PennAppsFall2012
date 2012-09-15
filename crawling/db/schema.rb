@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915014046) do
+ActiveRecord::Schema.define(:version => 20120915023640) do
 
   create_table "businesses", :force => true do |t|
     t.string   "title"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20120915014046) do
   end
 
   create_table "crimes", :force => true do |t|
-    t.string   "type"
+    t.string   "crime_type"
     t.string   "address"
     t.decimal  "lat",          :precision => 25, :scale => 21
     t.decimal  "long",         :precision => 25, :scale => 21
@@ -49,6 +49,21 @@ ActiveRecord::Schema.define(:version => 20120915014046) do
     t.decimal  "long",           :precision => 25, :scale => 21
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+  end
+
+  create_table "points", :force => true do |t|
+    t.decimal  "lat",        :precision => 25, :scale => 21
+    t.decimal  "long",       :precision => 25, :scale => 21
+    t.decimal  "level",      :precision => 5,  :scale => 3
+    t.integer  "num_crimes"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "testthingies", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
