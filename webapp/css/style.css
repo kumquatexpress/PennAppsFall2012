@@ -62,15 +62,19 @@ display: none;
 	color: #fff;
 	padding: 10px;
 }
-.results .sublet:hover {
-    background: #fff;
+.results .sublet.hovered {
+    background: white;
     color: #555;
     cursor: pointer;
 }
 .sublet .glance {
     float: left;
     width: 35px;
-    padding-right: 5px;
+    padding-right: 10px;
     text-align: center;
+    font-weight: bold;
+    font-size: 130%;
+}
+.sublet .title {
     font-weight: bold;
 }
