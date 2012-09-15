@@ -11,6 +11,7 @@
     <script type="text/javascript" src="js/jquery-1.8.1.js"></script>
     <script type="text/javascript" src="js/maps.js"></script>
     <script type="text/javascript" src='js/ui.js'></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
 
   </head>
     <link rel=stylesheet href="css/style.css" type="text/css" media=screen>

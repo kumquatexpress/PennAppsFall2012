@@ -83,7 +83,7 @@
 
   function getCrimes(){
 
-    /*
+    
     data = 
     {
       "max_lat": viewport_ne.lat(),
@@ -93,16 +93,16 @@
     }
     $.getJSON("http://maps.hulce.net/crime_points.php", data, function(data){
       console.log(data);
-    */
+    
     
     clearMarkers();
-    var data = temp_data;
+    //var data = temp_data;
     console.log(data.length + 'wefwef');
     for(i=0; i<data.length;i++) {
       generateMarker(data[i].lat,data[i].lon,data[i].url);
     }
 
-    //});
+    });
 
   }
 
