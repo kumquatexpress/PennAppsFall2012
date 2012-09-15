@@ -14,9 +14,9 @@ $q = mysql_query($query,$conn) or die(mysql_error());
 //    var_dump($point);
 //}
 $test = array();
-$test[] = array('lat'=>39.99,'long'=>-75.11,'url'=>"http://www.sidefx.com/docs/houdini9.5/icons/medium/SOP/circle.png");
-$test[] = array('lat'=>39.98,'long'=>-75.17,'url'=>"http://www.sidefx.com/docs/houdini9.5/icons/medium/SOP/circle.png");
-$test[] = array('lat'=>39.976,'long'=>-75.15,'url'=>"http://www.sidefx.com/docs/houdini9.5/icons/medium/SOP/circle.png");
-$test[] = array('lat'=>39.97,'long'=>-75.16,'url'=>"http://www.sidefx.com/docs/houdini9.5/icons/medium/SOP/circle.png");
+$test[] = array('lat'=>39.99,'lon'=>-75.11,'url'=>"http://www.sidefx.com/docs/houdini9.5/icons/medium/SOP/circle.png");
+$test[] = array('lat'=>39.98,'lon'=>-75.17,'url'=>"http://www.sidefx.com/docs/houdini9.5/icons/medium/SOP/circle.png");
+$test[] = array('lat'=>39.976,'lon'=>-75.15,'url'=>"http://www.sidefx.com/docs/houdini9.5/icons/medium/SOP/circle.png");
+$test[] = array('lat'=>39.97,'lon'=>-75.16,'url'=>"http://www.sidefx.com/docs/houdini9.5/icons/medium/SOP/circle.png");
 echo json_encode($test);
 ?>

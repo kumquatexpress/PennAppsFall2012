@@ -6,7 +6,9 @@
   
   jQuery.getJSON('http://maps.hulce.net/crime_points.php',{},function(data){
     console.log(data); 
-
+    for(point in data) {
+        generateMarker(point.lat,point.lon,point.url);
+    }
   });
 
 
@@ -36,7 +38,7 @@
       function() {
         console.log('hi');
         var zoomLevel = map.getZoom();
-        map.setCenter(myLatLng);
+        map.setCenter(center);
         infowindow.setContent('Zoom: ' + zoomLevel);
     });
   }
@@ -50,7 +52,7 @@
       draggable:true,
       animation: google.maps.Animation.DROP,
       position: location,
-      icon: image
+      icon: image_url
     });
 
   }
