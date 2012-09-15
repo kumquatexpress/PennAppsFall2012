@@ -12,7 +12,7 @@ $query = "SELECT * FROM points WHERE $q_lat AND $q_lon";
 $q = mysql_query($query,$conn) or die(mysql_error());
 $points = array();
 while($point = mysql_fetch_assoc($q)) {
-    $url = "img/32/" . ($point['level'] > 50) ? "100.png" : "20.png";
+    $url = ($point['level'] > 50) ? "img/32/100.png" : "img/32/20.png";
     $points[] = array('lat'=>$point['lat'],'lon'=>$point['long'],'url'=>$url);
 }
 echo json_encode($points);
