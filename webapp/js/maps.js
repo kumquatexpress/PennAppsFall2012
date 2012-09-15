@@ -19,7 +19,7 @@
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
     eventHandles();
-    generateAllCrimes();
+    //generateAllCrimes();
 
   }
 
@@ -80,10 +80,7 @@
       console.log(data); 
     });
     */
-    for(point in data) {
-        console.log(data[point]);
-        generateMarker(data[point].lat,data[point].lon,data[point].url);
-    }
+
   }
 
 
@@ -97,6 +94,11 @@
     }
     $.getJSON("http://maps.hulce.net/crime_points.php", data, function(data){
       console.log(data);
+    for(point in data) {
+      console.log(data[point]);
+      generateMarker(data[point].lat,data[point].lon,data[point].url);
+    }
+
     });
 
   }
