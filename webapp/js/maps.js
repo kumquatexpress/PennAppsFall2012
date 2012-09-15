@@ -3,7 +3,11 @@
   var map;
   var center_lat = 39.8282;
   var center_long = -98.5795;
+  
+  jQuery.getJSON('http://maps.hulce.net/crime_points.php',{},function(data){
+    console.log(data); 
 
+  });
 
 
   function initialize() {
@@ -45,7 +49,7 @@
       map:map,
       draggable:true,
       animation: google.maps.Animation.DROP,
-      position: location 
+      position: location,
       icon: image
     });
 
