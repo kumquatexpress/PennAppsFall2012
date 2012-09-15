@@ -118,8 +118,8 @@
       heatmap = new google.maps.visualization.HeatmapLayer({
           data: heatmapData,
           radius: 40,
-          opacity: 1,
-          gradient: ['#f00','#0f0']
+          opacity: .6,
+          gradient: ['#0f0','#ff0','#f00']
         });
         console.log(heatmapData);
         heatmap.setMap(map);
