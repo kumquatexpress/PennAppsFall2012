@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  address: MyString
+  lat: 9.99
+  long: 9.99
+  date: 2012-09-08 23:05:04
+
+two:
+  type: 
+  address: MyString
+  lat: 9.99
+  long: 9.99
+  date: 2012-09-08 23:05:04

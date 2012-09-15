@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  address: MyString
+  lat: 9.99
+  long: 9.99
+  image_url: MyString
+  yelp_url: MyString
+  yelp_id: MyString
+
+two:
+  title: MyString
+  address: MyString
+  lat: 9.99
+  long: 9.99
+  image_url: MyString
+  yelp_url: MyString
+  yelp_id: MyString

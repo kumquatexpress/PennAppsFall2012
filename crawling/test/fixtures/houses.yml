@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  listing_id: 
+  listing_url: MyString
+  price: 1
+  listing_header: MyText
+  address: MyString
+  city: MyString
+  zip: 
+  images: MyText
+  lat: 9.99
+  long: 9.99
+
+two:
+  listing_id: 
+  listing_url: MyString
+  price: 1
+  listing_header: MyText
+  address: MyString
+  city: MyString
+  zip: 
+  images: MyText
+  lat: 9.99
+  long: 9.99
