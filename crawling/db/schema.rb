@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20120915215711) do
   end
 
   create_table "houses", :force => true do |t|
-    t.integer  "listing_id"
+    t.string  "listing_id"
     t.string   "listing_url"
     t.integer  "price"
     t.text     "listing_header"

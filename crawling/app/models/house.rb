@@ -5,6 +5,8 @@ class House < ActiveRecord::Base
   establish_connection 'mysql_' + Rails.env
   require 'net/http'
   require 'nokogiri'
+  require 'json'
+  require 'open-uri'
 
   geocoded_by :address, :latitude => :lat,
   :longitude => :long
@@ -23,65 +25,67 @@ class House < ActiveRecord::Base
   end
 
   def calculate_danger
-  	radius = 0.005
-  	begin
-	  	if self.lat != nil && self.long != nil
-	  		crimes = Crime.where("`lat` < '"+(self.lat+radius).to_s+"' and
-	  		`lat` > '"+(self.lat-radius).to_s+"' and `long` < '"+(self.long+radius).to_s+"'
-	  		 and `long` > '"+(self.long-radius).to_s+"'")
-		   	crimescount = crimes.count
-		  	rating = 0
+  	unless self.level
+	  	radius = 0.005
+	  	begin
+		  	if self.lat != nil && self.long != nil
+		  		crimes = Crime.where("`lat` < '"+(self.lat+radius).to_s+"' and
+		  		`lat` > '"+(self.lat-radius).to_s+"' and `long` < '"+(self.long+radius).to_s+"'
+		  		 and `long` > '"+(self.long-radius).to_s+"'")
+			   	crimescount = crimes.count
+			  	rating = 0
 
-		  	crimes.each do |crime|
-		  		value = 1
-		  		clat = crime.lat
-		  		clong = crime.long
-		  		distance = Math.sqrt(
-		  			(self.lat-clat)*(self.lat-clat)+
-		  			(self.long-clong)*(self.long-clong))
+			  	crimes.each do |crime|
+			  		value = 1
+			  		clat = crime.lat
+			  		clong = crime.long
+			  		distance = Math.sqrt(
+			  			(self.lat-clat)*(self.lat-clat)+
+			  			(self.long-clong)*(self.long-clong))
 
-		  		if(crime.crime_type == "Shooting")
-		  			value *= 10
-		  		elsif(crime.crime_type == "Vandalism")
-		  			value *= 2
-		  		elsif(crime.crime_type == "Burglary")
-		  			value *= 1
-		  		elsif(crime.crime_type == "Arson")
-		  			value *= 7
-		  		elsif(crime.crime_type == "Assault")
-		  			value *= 6
-		  		elsif(crime.crime_type == "Robbery")
-		  			value *= 3
-		  		elsif(crime.crime_type == "Theft")
-		  			value *= 0.5
-		  		elsif(crime.crime_type == "Other")
-		  			value *= 2
-		  		elsif(crime.crime_type == "Arrest")
-		  			value *= 5
-		  		else
-		  			value = 0
+			  		if(crime.crime_type == "Shooting")
+			  			value *= 10
+			  		elsif(crime.crime_type == "Vandalism")
+			  			value *= 2
+			  		elsif(crime.crime_type == "Burglary")
+			  			value *= 1
+			  		elsif(crime.crime_type == "Arson")
+			  			value *= 7
+			  		elsif(crime.crime_type == "Assault")
+			  			value *= 6
+			  		elsif(crime.crime_type == "Robbery")
+			  			value *= 3
+			  		elsif(crime.crime_type == "Theft")
+			  			value *= 0.5
+			  		elsif(crime.crime_type == "Other")
+			  			value *= 2
+			  		elsif(crime.crime_type == "Arrest")
+			  			value *= 5
+			  		else
+			  			value = 0
+			  		end
+
+			  		if distance > 0.0001
+			  			value *= (0.00145/distance)
+			  		else
+			  			value *= 15
+			  		end
+
+			  		if value > 1000
+			  			value = 1000
+			  		end
+			  		rating += value
 		  		end
 
-		  		if distance > 0.0001
-		  			value *= (0.00145/distance)
-		  		else
-		  			value *= 15
-		  		end
-
-		  		if value > 1000
-		  			value = 1000
-		  		end
-		  		rating += value
-	  		end
-
-	  		level = rating
-	  		crime_count = crimescount
-	  		self.level = rating
-	  		self.crime_count = crime_count
-	  		self.save
-	  	end
-	rescue
-		print 'NaN'
+		  		level = rating
+		  		crime_count = crimescount
+		  		self.level = rating
+		  		self.crime_count = crime_count
+		  		self.save
+		  	end
+		rescue
+			print 'NaN'
+		end
 	end
   end
 
@@ -136,7 +140,7 @@ class House < ActiveRecord::Base
 		if price_start && price_end
 			price = details[price_start+1..price_end].strip
 		end
-		print price
+		print "price"+price.to_s+'\n'
 
 		bedroom_start = details.index("br")
 		if bedroom_start
@@ -146,12 +150,12 @@ class House < ActiveRecord::Base
 		else
 			bedrooms = "Unknown"
 		end
-		print bedrooms
+		print "bedrooms"+bedrooms.to_s+'\n'
 
-		size_start = details.index("ft²")
+		size_start = details.index("ft")
 		if size_start
 			size = details[size_start-4..size_start-1]
-			print size
+			print "size"+size.to_s+'\n'
 		end
 
 		listing_url = item.css('a')[0]['href']
@@ -184,12 +188,57 @@ class House < ActiveRecord::Base
   				)
   			temp.save
   		end
-  		current_house.size = size
-  		current_house.bedrooms = bedrooms
+  		if current_house
+	  		if size != nil
+	  			current_house.size = size
+	  		end
+	  		if bedrooms != nil
+	  			current_house.bedrooms = bedrooms
+	  		end
+	  		current_house.save
+	  	end
+	end
+	return ret
+  end
+
+  def get_image_and_date
+  	if self.listing_url
+  		begin
+	  		uri = self.listing_url
+		  	page = Nokogiri::HTML(open(uri))
+		rescue
+			print 'badurl'
+			return
+		end
+		  	date = page.css('.postingdate').text
+		  	date = date[6..date.length-4]
+		  	print date
+
+		  	images = Array.new
+
+			imagehref = page.css('div#ci img#iwi')
+			if imagehref.first
+				href = imagehref[0]['src']
+				images.push(href)
+
+				if page.css('div#iwt .tn')
+					page.css('div#iwt .tn').each do |smallerimage|
+						images.push(smallerimage.css('a')[0]['href'])
+					end
+				end
+			end
+
+			ret = JSON.generate(images)
+			print ret
+
+			if date
+				self.date = DateTime.parse(date)
+			end
+			self.images = ret
+			self.save
+			ret	
 
 	end
-
-	return ret
   end
 
 end

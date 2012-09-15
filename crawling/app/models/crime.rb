@@ -17,7 +17,7 @@ class Crime < ActiveRecord::Base
   end
 
   def self.get_crimes(lat, long)
-  	start_date = '2011-01-01'
+  	start_date = '2012-07-01'
   	radius = 0.002
   	http_uri = 'http://api.spotcrime.com'+
   	'/crimes.json?lat='+lat.to_s+'&lon='+long.to_s+
