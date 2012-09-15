@@ -8,6 +8,7 @@
   var center_long = -98.5795;
   var center = new google.maps.LatLng(center_lat, center_long)
   var markers = [];
+  var geocoder = new google.maps.Geocoder();
 
   //viewport corners
   var viewport_ne;
@@ -184,6 +185,19 @@
         var arrowStyle = document.getElementById('arrowStyle').value;
         infoBubble.setArrowStyle(arrowStyle);
       }
+
+
+  function search(address){
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        map.setZoom(15);
+      } else {
+        alert("We weren't able to find the location you specified! " + status);
+      }
+    });
+  }
+
   
 
 })();
