@@ -1,5 +1,6 @@
 class Point < ActiveRecord::Base
   attr_accessible :lat, :level, :long, :num_crimes
+  establish_connection 'mysql_' + Rails.env
 
   def self.calculate_all_points(min_lat, max_lat, min_long, max_long)
   	 i = min_lat
@@ -36,24 +37,21 @@ class Point < ActiveRecord::Base
 
   		if(crime.crime_type == "Shooting")
   			value *= 10
-  		end
-  		if(crime.crime_type == "Assault")
+  		elsif(crime.crime_type == "Assault")
   			value *= 3
-  		end
-  		if(crime.crime_type == "Robbery")
+  		elsif(crime.crime_type == "Robbery")
   			value *= 1
-  		end
-  		if(crime.crime_type == "Theft")
+  		elsif(crime.crime_type == "Theft")
   			value *= 0.4
-  		end
-  		if(crime.crime_type == "Other")
+  		elsif(crime.crime_type == "Other")
   			value *= 1
-  		end
-  		if(crime.crime_type == "Arrest")
+  		elsif(crime.crime_type == "Arrest")
   			value *= 3
+  		else
+  			value = 0
   		end
 
-  		value *= (0.008/distance)
+  		value *= (0.007/distance)
   		rating -= value
   	end
 

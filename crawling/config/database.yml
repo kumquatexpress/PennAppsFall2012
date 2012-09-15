@@ -12,7 +12,7 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-development:
+mysql_development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
@@ -23,7 +23,7 @@ development:
   password: pennapps
   socket: /var/run/mysqld/mysqld.sock
 
-sqlite_development:
+development:
   adapter: sqlite3
   database: db/development.sqlite3
   pool: 5
@@ -53,7 +53,7 @@ test:
   pool: 5
   timeout: 5000
 
-production:
+mysql_production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
