@@ -3,6 +3,7 @@ function search_true() {
     $('.overlay').each(function() {
                 $(this).fadeOut();
         });
+    $('.results').html("<img class='loading' src='img/loading.gif'/>");
 }
 function search_false() {
     $('#search_input').animate({margin: '45% 31% 0%'},100,function(){});
@@ -14,7 +15,6 @@ function sublet_details() {
     $('.sublet').click(function() {
             $.getJSON('/sublets.php', {'id': $(this).find('.identifier').text()}, function(data){
                 console.log('sublet loaded');
-                console.log(data);
                 $('.controls .search').toggle();
                 $('.controls .back').toggle();
                 $('.storage').html($('.results').html());
@@ -34,6 +34,9 @@ $(document).ready(function() {
           $('#search_input').val('');
           $('#sidebar').fadeOut();
           $('.results').text('');
+          $('.overlay').each(function(){
+              $(this).fadeIn();
+          });
     });
     $('.controls .back').click(function(){
           $(this).toggle();

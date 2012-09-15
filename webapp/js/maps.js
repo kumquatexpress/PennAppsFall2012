@@ -2,6 +2,7 @@
   var map;
   var heatmap;
   var geocoder = new google.maps.Geocoder();
+  var mapped_sublets = [];
 (function(){
 
 
@@ -140,13 +141,13 @@
         });
         console.log(heatmapData.length);
         heatmap.setMap(map);
+        $('.results').html('');
         for(var i=0;i<data.sublets.length;i++) {
             var sub = data.sublets[i];
-            console.log(sub);
             $('.results').append(
                 "<div class='sublet'><span class='identifier'>"+sub.id+"</span>"+
             	"<div class='glance'>"+
-                    "<div class='rating'><img src='img/32/80.png' /></div>"+
+                    "<div class='rating'><img src='"+sub.image+"' /></div>"+
                     "<div class='price'>$"+sub.price+"</div>"+
                 "</div>"+
                 "<div class='info'>"+
@@ -155,6 +156,14 @@
                 "</div>\n\
 </div>"
             );
+            if($.inArray(sub.id,mapped_sublets)==-1) {
+                generateMarker(sub.lat,sub.lon,'img/sublet.png');
+                mapped_sublets.push(sub.id);
+            }
+            else {
+                console.log(sub.id);
+                console.log(mapped_sublets);
+            }
         }
         sublet_details();
     });

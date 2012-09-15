@@ -47,21 +47,36 @@ while($point = mysql_fetch_assoc($q)) {
 //==================
 //SUBLET INFORMATION
 //==================
-$query_sub = "SELECT * FROM houses WHERE $q_lat AND $q_lon ORDER BY `lat` DESC, `long` DESC";
+$query_sub = "SELECT * FROM houses WHERE $q_lat AND $q_lon AND price > 0 ORDER BY (1 / `level` / `price`) DESC, `lat` DESC, `long` DESC";
 $q_sub = mysql_query($query_sub,$conn) or die(mysql_error());
 $sublets = array();
 while($sublet = mysql_fetch_assoc($q_sub)) {
-    $price_info = explode("/", $sublet['price']);
-    $price = $price_info[0];
-    $size = $price_info[1];
-    $sublets[] = array(
-        'id' => $sublet['id'],
-        'price' =>$price,
-        'size' => strtoupper($size),
-        'description' =>$sublet['listing_header'],
-        'location'=> $sublet['address'],
-        'url' => $sublet['listing_url']
-    );
+        if($sublet['level'] > 450) {
+            $img = "20.png";
+        }
+        elseif($sublet['level'] > 350) {
+            $img = "40.png";
+        }
+        elseif($sublet['level'] > 175) {
+            $img = "60.png";
+        }
+        elseif($sublet['level'] > 50) {
+            $img = "80.png";
+        }
+        else {
+            $img = "100.png";
+        }
+        $sublets[] = array(
+            'id' => $sublet['id'],
+            'price' =>$sublet['price'],
+            'size' => strtoupper($size),
+            'description' =>$sublet['listing_header'],
+            'location'=> $sublet['address'],
+            'url' => $sublet['listing_url'],
+            'image' => 'img/32/'.$img,
+            'lat' => $sublet['lat'],
+            'lon' => $sublet['long'],
+        );
 }
 echo json_encode(array('points'=>$points,'sublets'=>$sublets));
 ?>
