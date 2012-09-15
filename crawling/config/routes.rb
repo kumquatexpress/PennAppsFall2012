@@ -1,4 +1,6 @@
 SecretNemesis::Application.routes.draw do
+  resources :points
+
   resources :houses
 
   resources :businesses
