@@ -1,7 +1,7 @@
 class House < ActiveRecord::Base
   attr_accessible :address, :city, :images, 
   :lat, :listing_header, :listing_id, :listing_url, 
-  :long, :price, :zip, :date, :crime_count, :level
+  :long, :price, :zip, :date, :crime_count, :level, :size, :bedrooms
   establish_connection 'mysql_' + Rails.env
   require 'net/http'
   require 'nokogiri'
@@ -114,8 +114,6 @@ class House < ActiveRecord::Base
   	else 
   		http_uri2 = "http://philadelphia.craigslist.org/sub/index.html"
   	end
-
-
   	uri = URI(http_uri2)
   	body = Net::HTTP.get(uri)
   	page = Nokogiri::HTML(body)
@@ -130,6 +128,8 @@ class House < ActiveRecord::Base
 	items.each do |item|
 		details = item.css('span.itemph').text
 		price_start = details.index("$")
+		listing_header = item.css('a').text
+
 		if price_start
 			price_end = details.index("/", price_start)
 		end
@@ -141,10 +141,18 @@ class House < ActiveRecord::Base
 		bedroom_start = details.index("br")
 		if bedroom_start
 			bedrooms = details[bedroom_start-1]
+		elsif listing_header.downcase.include?("studio")
+			bedrooms = "Studio"
 		else
 			bedrooms = "Unknown"
 		end
 		print bedrooms
+
+		size_start = details.index("ft²")
+		if size_start
+			size = details[size_start-4..size_start-1]
+			print size
+		end
 
 		listing_url = item.css('a')[0]['href']
 		idfromurl = listing_url.to_s.split("/").last
@@ -152,7 +160,6 @@ class House < ActiveRecord::Base
 		
 		print listing_id
 
-		listing_header = item.css('a').text
 		address = item.css('span.itempn').text
 	  	if address
 		  	address.strip
@@ -164,16 +171,22 @@ class House < ActiveRecord::Base
 			end
 		end
 
-  		unless House.where(:listing_id => listing_id).first
+		current_house = House.where(:listing_id => listing_id).first
+  		unless current_house
   			temp = House.new(
   				:address => address,
   				:listing_header => listing_header,
   				:listing_id => listing_id,
   				:listing_url => listing_url,
-  				:price => price
+  				:price => price,
+  				:bedrooms => bedrooms,
+  				:size => size
   				)
   			temp.save
   		end
+  		current_house.size = size
+  		current_house.bedrooms = bedrooms
+
 	end
 
 	return ret

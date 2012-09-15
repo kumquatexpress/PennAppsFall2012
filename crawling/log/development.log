@@ -819,3 +819,37 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to RenameTypeToCrimeType (20120915171413)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to AddCrimeCountAndDangerToHouses (20120915195150)
+Migrating to AddSizeAndBedroomsToHouses (20120915215711)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "houses" ADD "size" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "houses" ADD "bedrooms" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120915215711')
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("businesses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("crimes")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("houses")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("points")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("testthingies")

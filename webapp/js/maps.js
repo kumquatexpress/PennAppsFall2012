@@ -57,8 +57,8 @@
   }
 
 
-  function generateMarker(latitude, longitude, image_url){
-    var location = new google.maps.LatLng(latitude, longitude);
+  function generateMarker(sub, image_url){
+    var location = new google.maps.LatLng(sub.lat, sub.lon);
 
     marker = new google.maps.Marker({
       map:map,
@@ -78,7 +78,7 @@
 
     });
 
-    generateInfo(marker);
+    generateInfo(sub, marker);
 
   }
 
@@ -157,7 +157,7 @@
 </div>"
             );
             if($.inArray(sub.id,mapped_sublets)==-1) {
-                generateMarker(sub.lat,sub.lon,'img/sublet.png');
+                generateMarker(sub,'img/sublet.png');
                 mapped_sublets.push(sub.id);
             }
             else {
@@ -177,9 +177,13 @@
 
 
 
-  function generateInfo(marker){
-
-        var contentString = '<div class="marker-info">hihi</div>';
+  function generateInfo(sub, marker){
+        var contentString = 
+        '<div class="marker-info">'+'<div class="clheader">'+sub.description+
+        '<div class="address">Address: '+
+        sub.address+'</div><div class="price">Price: $'+
+        sub.price+'</div>'+'<div class="link">Craigslist Ad: '+
+        sub.listing_url+'</div>''</div>';
 
         infoBubble = new InfoBubble({
           maxWidth: 300,
