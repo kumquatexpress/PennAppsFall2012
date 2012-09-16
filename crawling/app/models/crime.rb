@@ -1,6 +1,5 @@
 class Crime < ActiveRecord::Base
   attr_accessible :address, :date, :lat, :long, :crime_type, :spotcrime_id
-  establish_connection 'mysql_' + Rails.env
   require 'open-uri'
   require 'json'
 
@@ -22,7 +21,7 @@ class Crime < ActiveRecord::Base
   	http_uri = 'http://api.spotcrime.com'+
   	'/crimes.json?lat='+lat.to_s+'&lon='+long.to_s+
   	'&radius='+radius.to_s+'&key=MLC&since='+start_date+'&max_records=500'
-
+  	print http_uri
   	body = open(http_uri).read
   	parsed_json = JSON(body)
 

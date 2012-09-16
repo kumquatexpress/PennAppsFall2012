@@ -6,3 +6,7 @@ SF_latmin: 37.724836
 SF_latmax: 37.903574
 SF_longmin: -122.475986
 SF_longmax: -122.234688
+NYC_latmin: 40.595185
+NYC_latmax: 40.909361
+NYC_longmin: -74.023933
+NYC_longmax: -73.737602

@@ -2,36 +2,36 @@ class House < ActiveRecord::Base
   attr_accessible :address, :city, :images, 
   :lat, :listing_header, :listing_id, :listing_url, 
   :long, :price, :zip, :date, :crime_count, :level, :size, :bedrooms
-  establish_connection 'mysql_' + Rails.env
   require 'net/http'
   require 'nokogiri'
   require 'json'
   require 'open-uri'
-
   geocoded_by :address, :latitude => :lat,
   :longitude => :long
   after_validation :geocode
+  establish_connection 'mysql_' + Rails.env
 
-  def calculate_latitude
-  	unless self.lat && self.long
-	  	latlong = self.geocode
-	  	if latlong != nil
-		  	self.lat = geocode[0]
-		  	self.long = geocode[1]
-		  	self.save
-		end
-  	end
-  	sleep(1)
+  def reproportion_latitude(place)
+  	unless self.address.include?("Philadelphia")
+	  	self.address = self.address+" ["+place+"]"
+		  	latlong = self.geocode
+		  	if latlong != nil
+			  	self.lat = latlong[0]
+			  	self.long = latlong[1]
+			end
+		self.save
+	  	sleep(1)
+	end
   end
 
   def calculate_danger
-  	unless self.level
 	  	radius = 0.005
 	  	begin
 		  	if self.lat != nil && self.long != nil
 		  		crimes = Crime.where("`lat` < '"+(self.lat+radius).to_s+"' and
 		  		`lat` > '"+(self.lat-radius).to_s+"' and `long` < '"+(self.long+radius).to_s+"'
-		  		 and `long` > '"+(self.long-radius).to_s+"'")
+		  		 and `long` > '"+(self.long-radius).to_s+"'"+
+		  		 "and `date` > '"+(Date.today.to_time-2.months).to_s+"'")
 			   	crimescount = crimes.count
 			  	rating = 0
 
@@ -86,7 +86,6 @@ class House < ActiveRecord::Base
 		rescue
 			print 'NaN'
 		end
-	end
   end
 
   def redo_address
@@ -114,9 +113,9 @@ class House < ActiveRecord::Base
   	ret = false
 
   	if number > 0 
-  		http_uri2 = "http://philadelphia.craigslist.org/sub/index"+number.to_s+".html"
+  		http_uri2 = "http://sfbay.craigslist.org/sub/index"+number.to_s+".html"
   	else 
-  		http_uri2 = "http://philadelphia.craigslist.org/sub/index.html"
+  		http_uri2 = "http://sfbay.craigslist.org/sub/index.html"
   	end
   	uri = URI(http_uri2)
   	body = Net::HTTP.get(uri)
@@ -142,15 +141,19 @@ class House < ActiveRecord::Base
 		end
 		print "price"+price.to_s+'\n'
 
-		bedroom_start = details.index("br")
-		if bedroom_start
-			bedrooms = details[bedroom_start-1]
-		elsif listing_header.downcase.include?("studio")
-			bedrooms = "Studio"
-		else
-			bedrooms = "Unknown"
+		begin
+			bedroom_start = details.index("br")
+			if bedroom_start
+				bedrooms = details[bedroom_start-1]
+			elsif listing_header.downcase.include?("studio")
+				bedrooms = "Studio"
+			else
+				bedrooms = "Unknown"
+			end
+			print "bedrooms"+bedrooms.to_s+'\n'
+		rescue
+			print "bad downcase"
 		end
-		print "bedrooms"+bedrooms.to_s+'\n'
 
 		size_start = details.index("ft")
 		if size_start
@@ -171,7 +174,7 @@ class House < ActiveRecord::Base
 			if naddress
 				naddress.gsub(",", " ")
 				naddress.gsub("/", " ")
-				address = naddress
+				address = naddress + " ["+place+"]"
 			end
 		end
 
@@ -182,21 +185,12 @@ class House < ActiveRecord::Base
   				:listing_header => listing_header,
   				:listing_id => listing_id,
   				:listing_url => listing_url,
-  				:price => price,
-  				:bedrooms => bedrooms,
-  				:size => size
+  				:price => price ||= nil,
+  				:bedrooms => bedrooms ||= nil,
+  				:size => size ||= nil
   				)
   			temp.save
   		end
-  		if current_house
-	  		if size != nil
-	  			current_house.size = size
-	  		end
-	  		if bedrooms != nil
-	  			current_house.bedrooms = bedrooms
-	  		end
-	  		current_house.save
-	  	end
 	end
 	return ret
   end

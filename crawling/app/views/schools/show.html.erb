@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @school.name %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @school.level %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @school.address %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @school.lat %>
+</p>
+
+<p>
+  <b>Long:</b>
+  <%= @school.long %>
+</p>
+
+
+<%= link_to 'Edit', edit_school_path(@school) %> |
+<%= link_to 'Back', schools_path %>

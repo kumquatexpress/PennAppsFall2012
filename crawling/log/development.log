@@ -861,3 +861,393 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (13.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to AddCrimeCountAndDangerToHouses (20120915195150)
+  [1m[35m (11.7ms)[0m  ALTER TABLE `houses` ADD `crime_count` int(11)
+Mysql2::Error: Duplicate column name 'crime_count': ALTER TABLE `houses` ADD `crime_count` int(11)
+Connecting to database specified by database.yml
+  [1m[36m (492.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+  [1m[35m (68.1ms)[0m  CREATE TABLE `hotels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `address` varchar(255), `city` varchar(255), `images` text, `lat` decimal, `long` decimal, `zip` int(11), `price` varchar(255), `level` decimal, `crime_count` int(11), `listing_url` varchar(255), `listing_id` varchar(255), `listing_header` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (25.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916021657')[0m
+  [1m[35m (15.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (10.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (11.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateHotels (20120916021657)
+  [1m[36m (1497.2ms)[0m  [1mDROP TABLE `hotels`[0m
+  [1m[35m (983.1ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120916021657'
+  [1m[36m (3993.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (20.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+  [1m[35m (69.8ms)[0m  CREATE TABLE `hotels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `address` varchar(255), `name` varchar(255), `city` varchar(255), `images` text, `lat` decimal, `long` decimal, `zip` int(11), `price` varchar(255), `level` decimal, `crime_count` int(11), `listing_url` varchar(255), `listing_id` varchar(255), `listing_header` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (27.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916021657')[0m
+  [1m[35m (60.4ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Interrupt: : SHOW CREATE TABLE `houses`
+Mysql2::Error: closed MySQL connection: SHOW FULL FIELDS FROM `points`
+Connecting to database specified by database.yml
+  [1m[36m (26.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+  [1m[35m (991.9ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (10.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (15.6ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateHotels (20120916021657)
+  [1m[36m (52.9ms)[0m  [1mDROP TABLE `hotels`[0m
+  [1m[35m (36.1ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120916021657'
+  [1m[36m (44.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (11.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1505.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+Connecting to database specified by database.yml
+  [1m[36m (1472.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+  [1m[35m (4067.1ms)[0m  CREATE TABLE `hotels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `address` varchar(255), `name` varchar(255), `city` varchar(255), `images` text, `lat` decimal, `long` decimal, `zip` int(11), `price` varchar(255), `level` decimal, `crime_count` int(11), `listing_url` varchar(255), `listing_id` varchar(255), `listing_header` text, `rating` decimal(2,1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (2497.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916021657')[0m
+  [1m[35m (1505.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (50.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (23.9ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateHotels (20120916021657)
+  [1m[36m (2048.1ms)[0m  [1mDROP TABLE `hotels`[0m
+  [1m[35m (1686.2ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120916021657'
+  [1m[36m (479.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (80.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+  [1m[35m (104.4ms)[0m  CREATE TABLE `hotels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `address` varchar(255), `name` varchar(255), `city` varchar(255), `images` text, `lat` decimal(25,21), `long` decimal(25,21), `zip` int(11), `price` varchar(255), `level` decimal, `crime_count` int(11), `listing_url` varchar(255), `listing_id` varchar(255), `listing_header` text, `rating` decimal(2,1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (59.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916021657')[0m
+  [1m[35m (19.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+IRB::Abort: abort then interrupt!: UPDATE `hotels` SET `level` = 0, `crime_count` = 0, `updated_at` = '2012-09-16 03:07:55' WHERE `hotels`.`id` = 32
+Mysql2::Error: closed MySQL connection: ROLLBACK
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '40.770341200000004' and
+		  		`lat` > '40.7603412' and `long` < '-73.9710088'
+		  		 and `long` > '-73.9810088')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '40.7104883' and
+		  		`lat` > '40.700488299999996' and `long` < '-74.0122486'
+		  		 and `long` > '-74.0222486')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '40.7578163684503' and
+		  		`lat` > '40.747816368450295' and `long` < '-73.97601091384891'
+		  		 and `long` > '-73.9860109138489')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '40.769325' and
+		  		`lat` > '40.759325' and `long` < '-73.972931'
+		  		 and `long` > '-73.982931')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '40.766667000000005' and
+		  		`lat` > '40.756667' and `long` < '-73.9699136'
+		  		 and `long` > '-73.97991359999999')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '40.710118900000005' and
+		  		`lat` > '40.7001189' and `long` < '-74.00269180000001'
+		  		 and `long` > '-74.0126918')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '40.745215300000005' and
+		  		`lat` > '40.7352153' and `long` < '-73.99837720000001'
+		  		 and `long` > '-74.0083772')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '40.763146500000005' and
+		  		`lat` > '40.7531465' and `long` < '-73.970341'
+		  		 and `long` > '-73.980341')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.797453600000004' and
+		  		`lat` > '37.7874536' and `long` < '-122.3957939'
+		  		 and `long` > '-122.40579389999999')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.796532' and
+		  		`lat` > '37.786531999999994' and `long` < '-122.40711800000001'
+		  		 and `long` > '-122.417118')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.791290000000004' and
+		  		`lat` > '37.78129' and `long` < '-122.396375'
+		  		 and `long` > '-122.406375')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.798104' and
+		  		`lat` > '37.788104' and `long` < '-122.39817400000001'
+		  		 and `long` > '-122.408174')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.791609400000006' and
+		  		`lat` > '37.7816094' and `long` < '-122.3997338'
+		  		 and `long` > '-122.4097338')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.797071100000004' and
+		  		`lat` > '37.7870711' and `long` < '-122.43805210000001'
+		  		 and `long` > '-122.4480521')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.793939200000004' and
+		  		`lat` > '37.7839392' and `long` < '-122.40524860000001'
+		  		 and `long` > '-122.4152486')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.7933448' and
+		  		`lat` > '37.783344799999995' and `long` < '-122.4042031'
+		  		 and `long` > '-122.4142031')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.798618700000006' and
+		  		`lat` > '37.7886187' and `long` < '-122.387735183239'
+		  		 and `long` > '-122.39773518323899')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.796778200000006' and
+		  		`lat` > '37.7867782' and `long` < '-122.40237780000001'
+		  		 and `long` > '-122.4123778')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.809178100000004' and
+		  		`lat` > '37.7991781' and `long` < '-122.41090170000001'
+		  		 and `long` > '-122.4209017')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.794711500000005' and
+		  		`lat` > '37.7847115' and `long` < '-122.40643750000001'
+		  		 and `long` > '-122.4164375')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.795066600000006' and
+		  		`lat` > '37.7850666' and `long` < '-122.4034819'
+		  		 and `long` > '-122.4134819')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.790181000000004' and
+		  		`lat` > '37.780181' and `long` < '-122.403355'
+		  		 and `long` > '-122.413355')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.794976500000004' and
+		  		`lat` > '37.7849765' and `long` < '-122.4049892'
+		  		 and `long` > '-122.4149892')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.793109400000006' and
+		  		`lat` > '37.7831094' and `long` < '-122.4050692'
+		  		 and `long` > '-122.41506919999999')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.794511400000005' and
+		  		`lat` > '37.7845114' and `long` < '-122.408297'
+		  		 and `long` > '-122.418297')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.786671124780206' and
+		  		`lat` > '37.7766711247802' and `long` < '-122.399625415802'
+		  		 and `long` > '-122.409625415802')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.804968' and
+		  		`lat` > '37.794968' and `long` < '-122.428015'
+		  		 and `long` > '-122.438015')
+Mysql2::Error: closed MySQL connection: SELECT COUNT(*) FROM `crimes`  WHERE (`lat` < '37.795718400000005' and
+		  		`lat` > '37.7857184' and `long` < '-122.40019600000001'
+		  		 and `long` > '-122.410196')
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (6.9ms)[0m  DROP TABLE "businesses"
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE "businesses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "address" varchar(255), "lat" decimal(25,21), "long" decimal(25,21), "image_url" varchar(255), "yelp_url" varchar(255), "yelp_id" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (5.5ms)[0m  DROP TABLE "crimes"
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "crimes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "crime_type" varchar(255), "address" varchar(255), "lat" decimal(25,21), "long" decimal(25,21), "date" datetime, "spotcrime_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (4.3ms)[0m  CREATE TABLE "hotels" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "name" varchar(255), "city" varchar(255), "images" text, "lat" decimal(25,21), "long" decimal(25,21), "zip" integer, "price" varchar(255), "level" decimal(10,0), "crime_count" integer, "listing_url" varchar(255), "listing_id" varchar(255), "listing_header" text, "rating" decimal(2,1), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (9.3ms)[0m  [1mDROP TABLE "houses"[0m
+  [1m[35m (4.7ms)[0m  CREATE TABLE "houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" varchar(32), "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "date" datetime, "crime_count" integer, "level" decimal(5,2), "size" varchar(255), "bedrooms" varchar(32)) 
+  [1m[36m (3.9ms)[0m  [1mDROP TABLE "points"[0m
+  [1m[35m (4.7ms)[0m  CREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(25,21), "long" decimal(25,21), "level" decimal(5,3), "num_crimes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (4.1ms)[0m  [1mDROP TABLE "testthingies"[0m
+  [1m[35m (4.1ms)[0m  CREATE TABLE "testthingies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "utils" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "query" text, "time" text, "page" text) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120916021657')[0m
+  [1m[35m (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+  [1m[36m (1.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (7.5ms)[0m  CREATE TABLE "businesses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "address" varchar(255), "lat" decimal(25,21), "long" decimal(25,21), "image_url" varchar(255), "yelp_url" varchar(255), "yelp_id" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "crimes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "crime_type" varchar(255), "address" varchar(255), "lat" decimal(25,21), "long" decimal(25,21), "date" datetime, "spotcrime_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (4.1ms)[0m  CREATE TABLE "hotels" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "name" varchar(255), "city" varchar(255), "images" text, "lat" decimal(25,21), "long" decimal(25,21), "zip" integer, "price" varchar(255), "level" decimal(10,0), "crime_count" integer, "listing_url" varchar(255), "listing_id" varchar(255), "listing_header" text, "rating" decimal(2,1), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" varchar(32), "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "date" datetime, "crime_count" integer, "level" decimal(5,2), "size" varchar(255), "bedrooms" varchar(32)) [0m
+  [1m[35m (4.1ms)[0m  CREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(25,21), "long" decimal(25,21), "level" decimal(5,3), "num_crimes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "testthingies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (4.1ms)[0m  CREATE TABLE "utils" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "query" text, "time" text, "page" text) 
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36m (3.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (3.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120916021657')[0m
+  [1m[35m (3.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120915014046')
+  [1m[36m (3.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120910214501')[0m
+  [1m[35m (3.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120915023640')
+  [1m[36m (3.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120915071825')[0m
+  [1m[35m (3.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120909030504')
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (7.9ms)[0m  DROP TABLE "businesses"
+  [1m[36m (4.7ms)[0m  [1mCREATE TABLE "businesses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "address" varchar(255), "lat" decimal(25,21), "long" decimal(25,21), "image_url" varchar(255), "yelp_url" varchar(255), "yelp_id" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (9.6ms)[0m  DROP TABLE "crimes"
+  [1m[36m (4.7ms)[0m  [1mCREATE TABLE "crimes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "crime_type" varchar(255), "address" varchar(255), "lat" decimal(25,21), "long" decimal(25,21), "date" datetime, "spotcrime_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (4.9ms)[0m  DROP TABLE "hotels"
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "hotels" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "name" varchar(255), "city" varchar(255), "images" text, "lat" decimal(25,21), "long" decimal(25,21), "zip" integer, "price" varchar(255), "level" decimal(10,0), "crime_count" integer, "listing_url" varchar(255), "listing_id" varchar(255), "listing_header" text, "rating" decimal(2,1), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (5.4ms)[0m  DROP TABLE "houses"
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE "houses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" varchar(32), "listing_url" varchar(255), "price" integer, "listing_header" text, "address" varchar(255), "city" varchar(255), "zip" integer, "images" text, "lat" decimal(25,21), "long" decimal(25,21), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "date" datetime, "crime_count" integer, "level" decimal(5,2), "size" varchar(255), "bedrooms" varchar(32)) [0m
+  [1m[35m (4.0ms)[0m  DROP TABLE "points"
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lat" decimal(25,21), "long" decimal(25,21), "level" decimal(5,3), "num_crimes" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (4.4ms)[0m  DROP TABLE "testthingies"
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "testthingies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (4.1ms)[0m  DROP TABLE "utils"
+  [1m[36m (4.1ms)[0m  [1mCREATE TABLE "utils" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "query" text, "time" text, "page" text) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (6.9ms)[0m  [1mCREATE TABLE `businesses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `address` varchar(255), `lat` decimal(25,21), `long` decimal(25,21), `image_url` varchar(255), `yelp_url` varchar(255), `yelp_id` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (3.6ms)[0m  CREATE TABLE `crimes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `crime_type` varchar(255), `address` varchar(255), `lat` decimal(25,21), `long` decimal(25,21), `date` datetime, `spotcrime_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE `hotels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `address` varchar(255), `name` varchar(255), `city` varchar(255), `images` text, `lat` decimal(25,21), `long` decimal(25,21), `zip` int(11), `price` varchar(255), `level` decimal(10,0), `crime_count` int(11), `listing_url` varchar(255), `listing_id` varchar(255), `listing_header` text, `rating` decimal(2,1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (3.6ms)[0m  CREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `listing_id` varchar(32), `listing_url` varchar(255), `price` int(11), `listing_header` text, `address` varchar(255), `city` varchar(255), `zip` int(11), `images` text, `lat` decimal(25,21), `long` decimal(25,21), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `date` datetime, `crime_count` int(11), `level` decimal(5,2), `size` varchar(255), `bedrooms` varchar(32)) ENGINE=InnoDB
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE `points` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `lat` decimal(25,21), `long` decimal(25,21), `level` decimal(5,3), `num_crimes` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE `testthingies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE `utils` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `query` text, `time` text, `page` text) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120916021657')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915014046')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120910214501')[0m
+  [1m[35m (1.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915023640')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915071825')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120909030504')
+  [1m[36m (0.6ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (8.0ms)[0m  [1mDROP DATABASE IF EXISTS `pennappsfa2012`[0m
+  [1m[35m (0.1ms)[0m  CREATE DATABASE `pennappsfa2012` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE `businesses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `address` varchar(255), `lat` decimal(25,21), `long` decimal(25,21), `image_url` varchar(255), `yelp_url` varchar(255), `yelp_id` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (3.7ms)[0m  CREATE TABLE `crimes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `crime_type` varchar(255), `address` varchar(255), `lat` decimal(25,21), `long` decimal(25,21), `date` datetime, `spotcrime_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (4.1ms)[0m  [1mCREATE TABLE `hotels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `address` varchar(255), `name` varchar(255), `city` varchar(255), `images` text, `lat` decimal(25,21), `long` decimal(25,21), `zip` int(11), `price` varchar(255), `level` decimal(10,0), `crime_count` int(11), `listing_url` varchar(255), `listing_id` varchar(255), `listing_header` text, `rating` decimal(2,1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (4.2ms)[0m  CREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `listing_id` varchar(32), `listing_url` varchar(255), `price` int(11), `listing_header` text, `address` varchar(255), `city` varchar(255), `zip` int(11), `images` text, `lat` decimal(25,21), `long` decimal(25,21), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `date` datetime, `crime_count` int(11), `level` decimal(5,2), `size` varchar(255), `bedrooms` varchar(32)) ENGINE=InnoDB
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE `points` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `lat` decimal(25,21), `long` decimal(25,21), `level` decimal(5,3), `num_crimes` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (4.1ms)[0m  CREATE TABLE `testthingies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE `utils` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `query` text, `time` text, `page` text) ENGINE=InnoDB[0m
+  [1m[35m (3.7ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (13.4ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.5ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120916021657')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915014046')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120910214501')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915023640')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915071825')[0m
+  [1m[35m (1.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120909030504')
+  [1m[36m (0.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+Migrating to CreateSchools (20120916054016)
+  [1m[35m (3.5ms)[0m  CREATE TABLE `schools` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `level` varchar(255), `address` varchar(255), `lat` decimal, `long` decimal, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916054016')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateSchools (20120916054016)
+  [1m[36m (3.8ms)[0m  [1mDROP TABLE `schools`[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120916054016'
+  [1m[36m (0.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+Migrating to CreateSchools (20120916054016)
+  [1m[35m (5.9ms)[0m  CREATE TABLE `schools` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `level` varchar(255), `address` varchar(255), `lat` decimal, `long` decimal, `listing_url` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916054016')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateSchools (20120916054016)
+  [1m[36m (4.5ms)[0m  [1mDROP TABLE `schools`[0m
+  [1m[35m (1.3ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120916054016'
+  [1m[36m (0.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+Migrating to CreateSchools (20120916054016)
+  [1m[35m (6.3ms)[0m  CREATE TABLE `schools` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `level` varchar(255), `address` varchar(255), `lat` decimal, `long` decimal, `listing_url` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916054016')[0m
+  [1m[35m (0.4ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (12.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (626.5ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateHotels (20120916021657)
+  [1m[36m (5397.7ms)[0m  [1mDROP TABLE `hotels`[0m
+  [1m[35m (374.7ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120916021657'
+Connecting to database specified by database.yml
+  [1m[36m (11.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCrimes (20120909030504)
+Migrating to CreateBusinesses (20120910214501)
+Migrating to CreateHouses (20120915014046)
+Migrating to CreatePoints (20120915023640)
+Migrating to AddDateToHouses (20120915071825)
+Migrating to CreateHotels (20120916021657)
+  [1m[35m (113.7ms)[0m  CREATE TABLE `hotels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `address` varchar(255), `name` varchar(255), `city` varchar(255), `images` text, `lat` decimal(25,21), `long` decimal(25,21), `zip` int(11), `price` varchar(255), `level` decimal, `crime_count` int(11), `listing_url` varchar(255), `listing_id` varchar(255), `listing_header` text, `rating` decimal(2,1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (29.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916021657')[0m
+Migrating to CreateSchools (20120916054016)
+  [1m[35m (48.3ms)[0m  CREATE TABLE `schools` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `level` varchar(255), `address` varchar(255), `lat` decimal, `long` decimal, `listing_url` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (22.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120916054016')[0m
+  [1m[35m (122.0ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml

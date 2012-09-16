@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  address: MyString
+  city: MyString
+  images: MyText
+  lat: 9.99
+  long: 9.99
+  zip: 1
+  price: MyString
+  level: 9.99
+  crime_count: 1
+  listing_url: MyString
+  listing_id: MyString
+  listing_header: MyText
+
+two:
+  address: MyString
+  city: MyString
+  images: MyText
+  lat: 9.99
+  long: 9.99
+  zip: 1
+  price: MyString
+  level: 9.99
+  crime_count: 1
+  listing_url: MyString
+  listing_id: MyString
+  listing_header: MyText
