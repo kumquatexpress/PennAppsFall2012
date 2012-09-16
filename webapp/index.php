@@ -5,7 +5,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-
+    <title>SafeLet - Helping Find Safe Sublets Since 4AM</title>
 
     <script src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=false"></script>
     <script type="text/javascript" src="js/jquery-1.8.1.js"></script>

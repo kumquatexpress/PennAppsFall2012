@@ -42,7 +42,7 @@ while($crime = mysql_fetch_assoc($q_crime)) {
            'lat' => $crime['lat'], 
            'lon' => $crime['long'], 
            'address' => $crime['address'],
-           'time' => date('g:ia',$dt)
+           'time' => date('g:ia \o\n M j',$dt)
         );
     }
 }

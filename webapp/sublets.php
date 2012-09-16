@@ -12,7 +12,7 @@ $q_lon = "`long` >= '$min_lon' AND `long` <= '$max_lon'";
 //==================
 //SUBLET INFORMATION
 //==================
-$query_sub = "SELECT * FROM houses WHERE $q_lat AND $q_lon AND price > 0 ORDER BY (1 / `level` / `price`) DESC, `lat` DESC, `long` DESC";
+$query_sub = "SELECT * FROM houses WHERE $q_lat AND $q_lon AND price > 0 ORDER BY (1 / `level` / 0.67 / `price`) ASC, `lat` DESC, `long` DESC";
 $q_sub = mysql_query($query_sub,$conn) or die(mysql_error());
 recordQuery($query_sub);
 $sublets = array();
@@ -40,8 +40,10 @@ while($sublet = mysql_fetch_assoc($q_sub)) {
             'location'=> $sublet['address'],
             'url' => $sublet['listing_url'],
             'image' => 'img/32/'.$img,
+            'level' => round($sublet['level']),
             'lat' => $sublet['lat'],
             'lon' => $sublet['long'],
+            'photos' => count(json_decode($sublet['images']))
         );
 }
 echo json_encode($sublets);

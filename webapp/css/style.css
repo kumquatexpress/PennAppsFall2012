@@ -133,7 +133,12 @@ img.loading {
 .sublet-detail .gallery .thumbs {
     width: 100%;
     height: 50px;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
 .sublet-detail .gallery .thumb {
     height: 50px;
+}
+.sublet .photos img {
+    margin-right: 5px;
 }
