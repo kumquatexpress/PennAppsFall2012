@@ -295,18 +295,42 @@ function setSubletDetails(id) {
             map.panTo(
                 new google.maps.LatLng(data.info.lat, data.info.lon)
                 );
-            var crimes = "<div class='crime-box'>";
+                map.setZoom(15);
+            var crimes = "<div id='crime-points'>";
             for(var i=0;i<data.crime.crimes.length;i++) {
                 var crime = data.crime.crimes[i];
                 crimes += "<div class='crime'><img src='"+crime.type+".png'/>"+crime.address+" at "+crime.time+"</div>";
             }
             crimes += "</div>";
+            var images = "<div class='gallery' style='display: none'><div id='gallery-main'></div><div class='thumbs'>";
+            for(i=0;i<data.info.images.length;i++) {
+                images += "<img class='thumb' src='"+data.info.images[i]+"'/>";
+            }
+            images += "</div></div>";
             $('.results').html(
                 "<div class='sublet-detail'>"+
-                "<div class='title'>"+data.info.description+"</div>"+
-                "<div class='crime-data'>"+crimes+"</div>"+
+                "<h2 class='title'><a href='"+data.info.url+"'>"+data.info.location+"</a></h2>"+
+                "<div class='value'>$"+data.info.price+" for "+data.info.size+"</div>"+
+                "<div class='description'>"+data.info.description+"</div>"+
+                "<div class='images'>"+images+"</div>"+
+                "<div class='crime-tabs'><ul>"+
+                "<li><a href='#crime-types'>Type Summary</a></li>"+
+                "<li><a href='#crime-times'>Hourly Summary</a></li>"+
+                "<li><a href='#crime-points'>Latest Crimes</a></li>"+
+                "</ul><div id='crime-types'></div><div id='crime-times'></div>"+crimes+"</div>"+
                 "</div>"
                 );
+            $('.crime-tabs').tabs();
+            generateTimeGraph(data.crime.times);
+            generateBarGraph(data.crime.types);
+            if(data.info.images.length > 0) {
+                $('.gallery').css('display','inline');
+                $('img.thumb').click(function(){
+                    console.log($(this));
+                    $('.thumbs').append($('#gallery-main').html());
+                     $('#gallery-main').html($(this)[0]);
+                });
+            }
         }
         else {
             setState('results');

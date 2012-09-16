@@ -1,19 +1,3 @@
-
-window.onload = function () {
-
-  console.log('hi');
-
-    var y = [5,7,12,8,13,8,63,41,7,86,5,42,17,36,54,74,14,35,7,4,12,35,64,75];
-
-    var dat = [1,2,3,4,5,6,7,8]
-  generateTimeGraph(y);
-
-  generateBarGraph(dat);
-
-
-};
-
-
 //helper function
 function fillArray(value, length) {
   var arr = [], i = length;
@@ -27,7 +11,7 @@ function generateTimeGraph(array){
 
     var x = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
     var y = array
-    var r = Raphael("time-graph"),
+    var r = Raphael("crime-times"),
         txtattr = { font: "12px sans-serif" };
 
     var opts = {
@@ -77,7 +61,7 @@ function generateBarGraph(data){
       y.push(data);
     }
 
-    var r = Raphael("bar-graph"),
+    var r = Raphael("crime-types"),
         txtattr = { font: "12px sans-serif" };
     
 

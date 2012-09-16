@@ -9,15 +9,17 @@ mysql_select_db("pennappsfa2012",$conn);
 $query_sub = "SELECT * FROM houses WHERE `id` = " . $_GET['id'];
 $q_sub = mysql_query($query_sub,$conn) or die(mysql_error());
 $_info = mysql_fetch_assoc($q_sub);
+$sz = (strtolower($_info['bedrooms']) == 'studio') ? 'Studio' : $_info['bedrooms'] . "BR"; 
 $info = array(
     'id' => $_info['id'],
     'price' =>$_info['price'],
-    'size' => strtoupper($_info['size']),
+    'size' => $sz,
     'description' =>$_info['listing_header'],
     'location'=> $_info['address'],
     'url' => $_info['listing_url'],
     'lat' => $_info['lat'],
-    'lon' => $_info['long']
+    'lon' => $_info['long'],
+    'images' => json_decode($_info['images'])
 );
 $min_lat = $_info['lat'] - .00175;
 $max_lat = $_info['lat'] + .00175;
@@ -34,7 +36,7 @@ while($crime = mysql_fetch_assoc($q_crime)) {
     $dt = strtotime($crime['date']);
     $times[date('G',$dt)]++;
     $types[$crime['crime_type']]++;
-    if($dt > (time()-60*60*24*7)) {
+    if($dt > (time()-60*60*24*30)) {
         $crimes[] = array(
            'type' => $crime['crime_type'],
            'lat' => $crime['lat'], 

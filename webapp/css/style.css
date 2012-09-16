@@ -103,10 +103,12 @@ img.loading {
     padding: 20px;
     color: white;
 }
-.sublet-detail .title {
+.sublet-detail .title a {
     font-weight: bold;
+    color: #fff;
+    font-size: 150%;
 }
-.crime-box {
+.crime-tabs {
     width: 94%;
     height: 200px;
     overflow: auto;
@@ -120,4 +122,19 @@ img.loading {
     position: relative;
     top: 3px;
     margin-right: 5px;
+}
+.sublet-detail .gallery #gallery-main {
+    width: 100%;
+    overflow: hidden;
+    height: 200px;
+}
+.sublet-detail .gallery #gallery-main img {
+    height: 200px;
+}
+.sublet-detail .gallery .thumbs {
+    width: 100%;
+    height: 50px;
+}
+.sublet-detail .gallery .thumb {
+    height: 50px;
 }
