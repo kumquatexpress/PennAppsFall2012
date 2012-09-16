@@ -103,21 +103,37 @@ img.loading {
     padding: 20px;
     color: white;
 }
-.sublet-detail .title {
+.sublet-detail .title a {
+    color: white;
     font-weight: bold;
 }
-.crime-box {
+.crime-tabs {
     width: 94%;
-    height: 200px;
-    overflow: auto;
     font-size: 75%;
     padding: 3%;
-    background: white;
-    color: #666;
 }
 .crime img {
     height: 16px;
     position: relative;
     top: 3px;
     margin-right: 5px;
+}
+.crime-tabs .graph {
+    height: 200px;
+    padding: 10px 0px;
+}
+.sublet-detail .gallery #gallery-main {
+    width: 100%;
+    overflow: hidden;
+    height: 200px;
+}
+.sublet-detail .gallery #gallery-main img {
+    height: 200px;
+}
+.sublet-detail .gallery .thumbs {
+    width: 100%;
+    height: 50px;
+}
+.sublet-detail .gallery .thumb {
+    height: 50px;
 }
