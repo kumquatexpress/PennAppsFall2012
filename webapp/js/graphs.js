@@ -27,7 +27,7 @@ function generateTimeGraph(array){
 
     var x = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
     var y = array
-    var r = Raphael("holder"),
+    var r = Raphael("time-graph"),
         txtattr = { font: "12px sans-serif" };
 
     var opts = {
@@ -69,16 +69,22 @@ function generateTimeGraph(array){
 
 
 function generateBarGraph(data){
-    y = [data];
-    var r = Raphael("holder2"),
+    
+    var crimes = [];
+    var y = [];
+    for(key in data){
+      crimes.push(key);
+      y.push(data);
+    }
+
+    var r = Raphael("bar-graph"),
         txtattr = { font: "12px sans-serif" };
     
 
-    var crimes = [['Other', 'Arre', 'Thft', 'Robb.', 'Burg', 'Aslt', 'Batt', 'Shoot']];
 
     var opts = {
       type: "soft",
-      colors: fillArray('#77848c', 8)
+      colors: [ '#203d3e', '#185ac2', '#eecaca', '#d9074b']
        
     },
 
