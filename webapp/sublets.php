@@ -2,50 +2,45 @@
 error_reporting(E_ALL);
 $conn = mysql_pconnect("hulce.net", "pennapps", "pennapps") or die(mysql_error());
 mysql_select_db("pennappsfa2012",$conn);
+$max_lat = $_GET['max_lat'];
+$min_lat = $_GET['min_lat'];
+$max_lon = $_GET['max_lon'];
+$min_lon = $_GET['min_lon'];
+$q_lat = "`lat` >= '$min_lat' AND `lat` <= '$max_lat'";
+$q_lon = "`long` >= '$min_lon' AND `long` <= '$max_lon'";
 //==================
 //SUBLET INFORMATION
 //==================
-$query_sub = "SELECT * FROM houses WHERE `id` = " . $_GET['id'];
+$query_sub = "SELECT * FROM houses WHERE $q_lat AND $q_lon AND price > 0 ORDER BY (1 / `level` / `price`) DESC, `lat` DESC, `long` DESC";
 $q_sub = mysql_query($query_sub,$conn) or die(mysql_error());
-$_info = mysql_fetch_assoc($q_sub);
-$info = array(
-    'id' => $_info['id'],
-    'price' =>$_info['price'],
-    'size' => strtoupper($_info['size']),
-    'description' =>$_info['listing_header'],
-    'location'=> $_info['address'],
-    'url' => $_info['listing_url'],
-    'lat' => $_info['lat'],
-    'lon' => $_info['long']
-);
-$min_lat = $_info['lat'] - .00175;
-$max_lat = $_info['lat'] + .00175;
-$min_lon = $_info['long'] - .00175;
-$max_lon = $_info['long'] + .00175;
-$q_lat = "`lat` >= '$min_lat' AND `lat` <= '$max_lat'";
-$q_lon = "`long` >= '$min_lon' AND `long` <= '$max_lon'";
-$query_crimes = "SELECT * FROM crimes WHERE $q_lat AND $q_lon";
-$q_crime = mysql_query($query_crimes,$conn) or die(mysql_error());
-$crimes = array();
-$times = array();
-$types = array();
-while($crime = mysql_fetch_assoc($q_crime)) {
-    $times[date('G',strtotime($crime['date']))]++;
-    $types[$crime['crime_type']]++;
-    $crimes[] = array(
-       'type' => $crime['crime_type'],
-       'lat' => $crime['lat'], 
-       'lon' => $crime['long'], 
-       'address' => $crime['address'],
-       'time' => date('g:ia',strtotime($crime['date']))
-    );
+$sublets = array();
+while($sublet = mysql_fetch_assoc($q_sub)) {
+        if($sublet['level'] > 450) {
+            $img = "20.png";
+        }
+        elseif($sublet['level'] > 350) {
+            $img = "40.png";
+        }
+        elseif($sublet['level'] > 175) {
+            $img = "60.png";
+        }
+        elseif($sublet['level'] > 50) {
+            $img = "80.png";
+        }
+        else {
+            $img = "100.png";
+        }
+        $sublets[] = array(
+            'id' => $sublet['id'],
+            'price' =>$sublet['price'],
+            'size' => strtoupper($size),
+            'description' =>$sublet['listing_header'],
+            'location'=> $sublet['address'],
+            'url' => $sublet['listing_url'],
+            'image' => 'img/32/'.$img,
+            'lat' => $sublet['lat'],
+            'lon' => $sublet['long'],
+        );
 }
-echo json_encode(array(
-    'info'=>$info,
-    'crime'=>array(
-        'crimes' => $crimes,
-        'types' => $types,
-        'times' => $times
-    )
-    ));
+echo json_encode($sublets);
 ?>
