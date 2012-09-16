@@ -65,18 +65,25 @@ function eventListeners(){
 }
 
 
-function generateMarker(type, lat, lon, image_url){
+function generateMarker(type, lat, lon, image_url, sub){
     var location = new google.maps.LatLng(lat, lon);
 
-    marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
         map:map,
         draggable:false,
         animation: google.maps.Animation.DROP,
         position: location,
         icon: image_url
     });
+    
     if(type=="sublet") {
-        sublet_markers.push(marker); 
+        marker.set('sublet_id',sub.id);
+        sublet_markers.push(marker);
+        generateSubletBubble(sub,marker);
+        google.maps.event.addListener(marker,'click',function(){
+            console.debug(marker.get('sublet_id'));
+            setSubletDetails(marker.get('sublet_id'));
+        });
     }
     else {
         crime_markers.push(marker);
@@ -163,10 +170,14 @@ function plotSublets(set_results) {
         for(i=0;i<data.length;i++) {
             var sub = data[i];
             if($.inArray(sub.id,mapped_sublets)==-1) {
-                generateMarker('sublet',sub.lat,sub.lon,'img/sublet.png');
+                generateMarker('sublet',sub.lat,sub.lon,'img/sublet.png',sub);
                 mapped_sublets.push(sub.id);
             }
             if(set_results) {
+                    var pix = "";
+                if(sub.photos > 0) {
+                    pix = "<img src='img/photos.png'/>"+sub.photos+" Available";
+                }
                 $('.results').append(
                     "<div class='sublet'><span class='identifier'>"+sub.id+"</span>"+
                     "<div class='glance'>"+
@@ -176,6 +187,7 @@ function plotSublets(set_results) {
                     "<div class='info'>"+
                     "<div class='title'><span class='type'>"+sub.size+"</span></div>"+
                     "<div class='description'>"+sub.description+"</div>"+
+                    "<div class='photos'>"+pix+"</div>"+
                     "</div>\n\
 </div>"
                     );
@@ -231,13 +243,12 @@ function setState(state) {
 
 function generateSubletBubble(sub, marker){
     var contentString = 
-    '<div class="marker-info">'+'<div class="clheader">'+sub.description+
-    '<div class="address">Address: '+
-    sub.address+'</div><div class="price">Price: $'+
-    sub.price+'</div>'+'<div class="link">Craigslist Ad: '+
-    sub.listing_url+'</div></div>';
+    '<div class="marker-info">'+
+    '<div class="address">Location: '+
+    sub.location+'</div><div class="price">Price: $'+
+    sub.price+'</div><div class="crime_level">Crime Level:'+sub.level+'</div></div>';
 
-    bubble = new InfoBubble({
+    var bubble = new InfoBubble({
         maxWidth: 300,
         content: contentString,
         disableAutoPan: true,
@@ -247,13 +258,13 @@ function generateSubletBubble(sub, marker){
 
     google.maps.event.addListener(marker, 'mouseover', function() {
         if (!bubble.isOpen()) {
-            infoBubble.open(map, marker);
+            bubble.open(map, marker);
         //updateStyles();
         }
     });
     google.maps.event.addListener(marker, 'mouseout', function() {
         if (bubble.isOpen()) {
-            infoBubble.close(map, marker);
+            bubble.close(map, marker);
         }
     });
         
@@ -306,7 +317,7 @@ function setSubletDetails(id) {
             var crimes = "<div id='crime-points'><h3>Recent Crimes</h3>";
             for(var i=0;i<data.crime.crimes.length;i++) {
                 var crime = data.crime.crimes[i];
-                crimes += "<div class='crime'><img src='"+crime.type+".png'/>"+crime.address+" at "+crime.time+"</div>";
+                crimes += "<div class='crime'><img src='img/"+crime.type+".png'/>"+crime.address+" at "+crime.time+"</div>";
             }
             crimes += "</div>";
             var images = "<div class='gallery' style='display: none'><div id='gallery-main'></div><div class='thumbs'>";
@@ -352,6 +363,7 @@ function setSubletDetails(id) {
                 $('img.thumb').click(function(){
                     $('#gallery-main').html("<img src='"+$(this).attr('src')+"'/>");
                 });
+                $('img.thumb:first').click();
             }
         }
         else {
