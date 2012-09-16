@@ -119,7 +119,7 @@ function getViewport() {
 
 function updateCrimeMap(){
     console.log("Updating crime map...");
-    $.getJSON("http://maps.hulce.net/crimes.php", getViewport(), function(data){
+    $.getJSON("crimes.php", getViewport(), function(data){
         var heatmapData = [];
         for(var i=0;i<data.length;i++) {
             var the_point = data[i];
