@@ -104,24 +104,23 @@ img.loading {
     color: white;
 }
 .sublet-detail .title a {
+    color: white;
     font-weight: bold;
-    color: #fff;
-    font-size: 150%;
 }
 .crime-tabs {
     width: 94%;
-    height: 200px;
-    overflow: auto;
     font-size: 75%;
     padding: 3%;
-    background: white;
-    color: #666;
 }
 .crime img {
     height: 16px;
     position: relative;
     top: 3px;
     margin-right: 5px;
+}
+.crime-tabs .graph {
+    height: 200px;
+    padding: 10px 0px;
 }
 .sublet-detail .gallery #gallery-main {
     width: 100%;

@@ -12,7 +12,7 @@ $q_lon = "`long` >= '$min_lon' AND `long` <= '$max_lon'";
 //=================
 //CRIME INFORMATION
 //=================
-$query = "SELECT * FROM crimes WHERE $q_lat AND $q_lon AND `date` > '2012-06' ORDER BY `lat` DESC, `long` DESC";
+$query = "SELECT * FROM crimes WHERE $q_lat AND $q_lon AND `date` > '2012-05' ORDER BY `lat` DESC, `long` DESC";
 $q = mysql_query($query,$conn) or die(mysql_error());
 $points = array();
 while($point = mysql_fetch_assoc($q)) {

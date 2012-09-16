@@ -17,16 +17,16 @@ $q_sub = mysql_query($query_sub,$conn) or die(mysql_error());
 recordQuery($query_sub);
 $sublets = array();
 while($sublet = mysql_fetch_assoc($q_sub)) {
-        if($sublet['level'] > 450) {
+        if($sublet['level'] > 160) {
             $img = "20.png";
         }
-        elseif($sublet['level'] > 350) {
+        elseif($sublet['level'] > 125) {
             $img = "40.png";
         }
-        elseif($sublet['level'] > 175) {
+        elseif($sublet['level'] > 75) {
             $img = "60.png";
         }
-        elseif($sublet['level'] > 50) {
+        elseif($sublet['level'] > 40) {
             $img = "80.png";
         }
         else {

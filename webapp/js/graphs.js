@@ -1,3 +1,19 @@
+/*
+window.onload = function () { 
+
+console.log('hi'); 
+
+var y = [0, 5, 3, 3, 1, 5, 8, 5, 7, 5, 9, 3, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  
+
+var dat = [1,2,3,4,5,6,7,8]
+generateTimeGraph(y); 
+
+generateBarGraph(dat);
+
+
+};
+
+*/
 //helper function
 function fillArray(value, length) {
   var arr = [], i = length;
@@ -10,7 +26,13 @@ function fillArray(value, length) {
 function generateTimeGraph(array){
 
     var x = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
-    var y = array
+    
+    var y = fillArray(0,24);
+    for(var index in array){
+        y[index] = array[index];
+    }
+    
+    
     var r = Raphael("crime-times"),
         txtattr = { font: "12px sans-serif" };
 
@@ -19,12 +41,15 @@ function generateTimeGraph(array){
       "axis" : '0,0,1,1',
       "smooth": true,
       "shade": true,
-      "symbol": 'circle'
+      "symbol": 'circle',
+      "colors": ['black']
     };
 
     r.text(160, 10, "Average Crimes Per Hour").attr(txtattr);
 
-    var lines = r.linechart(10, 10, 300, 220, x, [y.slice(0, 1e3)], opts).hoverColumn(function () {
+    var lines = r.linechart(10, 10, 300, 220, x, [y.slice(0, 1e3)], opts);
+    
+    lines.hoverColumn(function () {
        
         this.tags = r.set();
    
@@ -54,6 +79,10 @@ function generateTimeGraph(array){
 
 function generateBarGraph(data){
     
+    if(data.length == 0){
+        return;
+    }
+
     var crimes = [];
     var y = [];
     for(key in data){

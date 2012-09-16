@@ -9,13 +9,9 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=false"></script>
     <script type="text/javascript" src="js/jquery-1.8.1.js"></script>
-    <script type="text/javascript" src="js/raphael-min.js"></script>
-    <script type="text/javascript" src="js/g.bar-min.js"></script>
-    <script type="text/javascript" src="js/g.line-min.js"></script>
-    <script type="text/javascript" src="js/g.raphael-min.js"></script>
+    <script type="text/javascript" src="flot/jquery.flot.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
-    <script type="text/javascript" src="js/graphs.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </head>
     <link rel=stylesheet href="css/style.css" type="text/css" media=screen>

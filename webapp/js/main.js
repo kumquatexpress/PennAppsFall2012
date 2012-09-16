@@ -55,6 +55,13 @@ function eventListeners(){
     $('.search').click(function(){
         setState('search');
     });
+    
+            $(document).keyup(function(e) {
+
+              if (e.keyCode == 27 && app_state == 'search') {
+                  setState('results');
+              }   // esc
+            });
 }
 
 
@@ -296,7 +303,7 @@ function setSubletDetails(id) {
                 new google.maps.LatLng(data.info.lat, data.info.lon)
                 );
                 map.setZoom(15);
-            var crimes = "<div id='crime-points'>";
+            var crimes = "<div id='crime-points'><h3>Recent Crimes</h3>";
             for(var i=0;i<data.crime.crimes.length;i++) {
                 var crime = data.crime.crimes[i];
                 crimes += "<div class='crime'><img src='"+crime.type+".png'/>"+crime.address+" at "+crime.time+"</div>";
@@ -313,22 +320,37 @@ function setSubletDetails(id) {
                 "<div class='value'>$"+data.info.price+" for "+data.info.size+"</div>"+
                 "<div class='description'>"+data.info.description+"</div>"+
                 "<div class='images'>"+images+"</div>"+
-                "<div class='crime-tabs'><ul>"+
-                "<li><a href='#crime-types'>Type Summary</a></li>"+
-                "<li><a href='#crime-times'>Hourly Summary</a></li>"+
-                "<li><a href='#crime-points'>Latest Crimes</a></li>"+
-                "</ul><div id='crime-types'></div><div id='crime-times'></div>"+crimes+"</div>"+
+                "<div class='crime-tabs'>"+
+                "<div id='crime-types'><h3>Crimes By Type</h3><div class='graph'></div></div><div id='crime-times'><h3>Crimes By Time</h3><div class='graph'></div></div>"+crimes+"</div>"+
                 "</div>"
                 );
-            $('.crime-tabs').tabs();
-            generateTimeGraph(data.crime.times);
-            generateBarGraph(data.crime.types);
+            //FLOT STUFF
+            var time_data = [];
+            for(key in data.crime.times) {
+                time_data.push([key, data.crime.times[key]]);
+            }
+            var type_data = [];
+            i=0;
+            for(key in data.crime.types) {
+                var _item = {label: key,data: [[i,data.crime.types[key]]],bars: {show: true}};
+                console.log(_item);
+                type_data.push(_item);
+                i++;
+            }
+            $.plot($('#crime-times .graph'), [time_data], {
+                xaxis: {color: 'white'},
+                yaxis: {color: 'white'}
+            });
+            console.log(type_data);
+            $.plot($('#crime-types .graph'), type_data, {
+                xaxis: {show: false, color: 'white'},
+                yaxis: {color: 'white'}
+            });
+            //FLOT STUFF
             if(data.info.images.length > 0) {
                 $('.gallery').css('display','inline');
                 $('img.thumb').click(function(){
-                    console.log($(this));
-                    $('.thumbs').append($('#gallery-main').html());
-                     $('#gallery-main').html($(this)[0]);
+                    $('#gallery-main').html("<img src='"+$(this).attr('src')+"'/>");
                 });
             }
         }
