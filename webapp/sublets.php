@@ -1,4 +1,5 @@
 <?php
+require 'utils.php';
 error_reporting(E_ALL);
 $conn = mysql_pconnect("hulce.net", "pennapps", "pennapps") or die(mysql_error());
 mysql_select_db("pennappsfa2012",$conn);
@@ -13,6 +14,7 @@ $q_lon = "`long` >= '$min_lon' AND `long` <= '$max_lon'";
 //==================
 $query_sub = "SELECT * FROM houses WHERE $q_lat AND $q_lon AND price > 0 ORDER BY (1 / `level` / `price`) DESC, `lat` DESC, `long` DESC";
 $q_sub = mysql_query($query_sub,$conn) or die(mysql_error());
+recordQuery($query_sub);
 $sublets = array();
 while($sublet = mysql_fetch_assoc($q_sub)) {
         if($sublet['level'] > 450) {

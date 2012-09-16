@@ -47,7 +47,7 @@ function eventListeners(){
     $('#search_form').submit(function() {
         event.preventDefault();
         search($('#search_input').val());
-        plotSublets(true);
+        setState('results');
     });
     $('.back').click(function(){
         plotSublets(true);
@@ -97,6 +97,8 @@ function getViewport() {
         "max_lon": viewport_ne.lng(),
         "min_lon": viewport_sw.lng()
     }
+    console.log("Viewport computed...");
+    console.log(data);
     return data;
 }
 

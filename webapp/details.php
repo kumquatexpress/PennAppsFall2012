@@ -1,4 +1,5 @@
 <?php
+require 'utils.php';
 error_reporting(E_ALL);
 $conn = mysql_pconnect("hulce.net", "pennapps", "pennapps") or die(mysql_error());
 mysql_select_db("pennappsfa2012",$conn);
